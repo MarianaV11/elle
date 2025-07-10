@@ -3,12 +3,18 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-function HighlightWord({ text, word, className }: any) {
+interface HighlightWordProps {
+  text: string;
+  word: string;
+  className?: string;
+}
+
+function HighlightWord({ text, word, className }: HighlightWordProps) {
   const parts = text.split(new RegExp(`(${word})`, "gi"));
 
   return (
     <>
-      {parts.map((part: any, i: number) =>
+      {parts.map((part, i) =>
         part.toLowerCase() === word.toLowerCase() ? (
           <span key={i} className={className}>
             {part}
